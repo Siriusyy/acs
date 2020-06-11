@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/materialdesignicons.min.css" rel="stylesheet">
+
+</head>
+<body>
+<div style="text-align: right;">
+    <ul id="pagination-demo" class="pagination"></ul>
+</div>
+<button class="btn btn-primary btn-block example-p-1">弹出框示例</button>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/jquery.twbsPagination.min.js"></script>
+
+<!--对话框-->
+<script src="js/layer/layer.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#pagination-demo').twbsPagination({
+            //total总记录数，就是多少条数据  pages总页数
+            totalPages: [[${totalpage}]],
+            startPage: [[${currentpage}]],
+            visiblePages: 5,
+            initiateStartPageClick: false,
+            first:'首页',
+            last:'末页',
+            prev:'上一页',
+            next:'下一页',
+            hideOnlyOnePage: false,
+            onPageClick: function (event,page) {
+                window.location.href='test.html?p='+page
+            }
+        });
+    })
+    $('.example-p-1').on('click', function () {
+        layer.alert('见到你真的很高兴', {icon: 6});
+    });
+</script>
+</body>
+
+
+</html>

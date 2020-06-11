@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yang.acs.mapper.AdminMapper">
+    <select id="getAllAdmin" resultType="Admin">
+        select * from admin
+    </select>
+    <select id="getAdminById" resultType="Admin">
+        select * from admin where id = #{id}
+    </select>
+    <select id="getAdminUsername" resultType="Admin">
+        select * from admin where username = #{username}
+    </select>
+    <insert id="addadmin" parameterType="Admin">
+        insert into admin(username,password,phone,email,`desc`)
+            values (#{username},#{password},#{phone},#{email},#{desc})
+    </insert>
+    <insert id="addSyslog" parameterType="SysLog">
+        insert into syslog(`date`,operation,operator,result)
+            values (#{date},#{operation},#{operator},#{result})
+    </insert>
+
+    <select id="getSysLogByPage" resultType="SysLog">
+        select * from syslog order by date desc limit #{page},8
+    </select>
+
+    <select id="getSysLogCount" resultType="Integer">
+        select count(1) from syslog
+    </select>
+
+    <delete id="delAdmin">
+        delete from admin where id = #{id}
+    </delete>
+</mapper>

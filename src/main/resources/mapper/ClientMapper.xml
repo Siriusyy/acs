@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yang.acs.mapper.ClientMapper">
+    <select id="getAllClient" resultType="Client">
+        select * from client
+    </select>
+
+    <select id="getClientlogByPage" resultType="ClientLog">
+        select * from clientlog limit #{page},8
+    </select>
+
+    <select id="getClientLogCount" resultType="Integer">
+        select count(1) from clientlog
+    </select>
+
+</mapper>
